@@ -1,0 +1,66 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    background-color:whitesmoke;
+}
+
+li{
+    list-style-type: none;
+    border: red solid 5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 64px;
+    color: purple;
+}
+
+h2 {
+    padding: 5px;
+    margin: 10%;
+    margin-top: -2%;
+    text-align: center;
+    font-size: 36px;
+    color:blue;
+}
+
+p{
+    text-align: center;
+    margin-top: -7%;
+    font-size: 24px;
+}
+
+#countdownClock{
+    text-align: center;
+    width: auto;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 75%;
+    font-size: 24px;
+}
+
+#high-score-page{
+    width: 10%;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    font-size: 24px;
+    color:mediumpurple;
+}
+
+#start-button{
+    font-size: xx-large;
+    margin-top: 10%;
+    background-color: cadetblue;
+    color:gold;
+}
+
+#starting-page{
+    text-align: center;
+}
+
+#warning{
+    color:crimson;
+}

@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>Document</title>
+    <title>Knowledge Quiz</title>
 </head>
 <body>
-    
+    <header>
+        <ul>
+            <li id="high-score-page">View High Scores</li>
+            <li id="countdownClock">Countdown Clock</li>
+        </ul>
+    </header>
+    <h1>Time To Test Your Knowledge!</h1>
+    <h2> How much have you learned from this coding bootcamp! Time to put you to the test! Can you solve these questions before the timer runs out?</h2> 
+        <p><span id="warning">*Warning*</span> If you answer a question incorrectly, time will be taken away from the timer!</p>
+
+    <section id="starting-page">
+        <button id="start-button">Start the Quiz!</button>
+    </section>
+    <section id="quiz-section">
+        <h2 id="question"></h2>
+        <p id="answers"></p>
+        <p id="correct-incorrect"></p>
 
     <script src="assets/js/script.js"></script>
 </body>
