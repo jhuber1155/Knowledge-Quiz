@@ -11,22 +11,44 @@ li{
     border: red solid 5px;
 }
 
-h1 {
+#heading {
     text-align: center;
     font-size: 64px;
     color: purple;
 }
 
-h2 {
+#subtext {
     padding: 5px;
     margin: 10%;
-    margin-top: -2%;
+    margin-left: 24%;
+    margin-right: 24%;
+    margin-top: 2%;
     text-align: center;
     font-size: 36px;
-    color:blue;
 }
 
-p{
+section{
+    font-size: x-large;
+    text-align: center;
+    margin-top: -10%;
+    margin: 10px;
+    padding: 10px;
+    border: yellow solid 5px;
+}
+
+.card{
+    display:block;
+    width: 25%;
+    font-size: larger;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: teal solid 5px;
+}
+
+#top-warning{
     text-align: center;
     margin-top: -7%;
     font-size: 24px;
@@ -50,9 +72,14 @@ p{
     color:mediumpurple;
 }
 
+#question{
+
+}
+
 #start-button{
     font-size: xx-large;
-    margin-top: 10%;
+    margin-right: auto;
+    margin-top: 0%;
     background-color: cadetblue;
     color:gold;
 }
