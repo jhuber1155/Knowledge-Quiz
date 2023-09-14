@@ -8,7 +8,6 @@ body{
 
 li{
     list-style-type: none;
-    border: red solid 5px;
 }
 
 #heading {
@@ -33,7 +32,6 @@ section{
     margin-top: -10%;
     margin: 10px;
     padding: 10px;
-    border: yellow solid 5px;
 }
 
 .card{
@@ -46,6 +44,18 @@ section{
     margin-left: auto;
     margin-right: auto;
     border: teal solid 5px;
+}
+
+#correctIncorrect{
+    display:block;
+    width: 25%;
+    font-size: larger;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: crimson solid 5px;
 }
 
 #top-warning{
@@ -72,8 +82,8 @@ section{
     color:mediumpurple;
 }
 
-#question{
-
+.hidden{
+    display: none;
 }
 
 #start-button{
