@@ -1,5 +1,6 @@
-var sectionEl = document.querySelector("#quiz-section")
-var countdownEl = document.querySelector("#countdownClock")
+var sectionEl = document.querySelector("#quiz-section");
+var highScoreListEl = document.querySelector(".high-score-input")
+var countdownEl = document.querySelector("#countdownClock");
 var startButton = document.querySelector("#start-button");
 var questionGrab = document.querySelector("#question");
 var answer1Grab = document.querySelector("#answer1");
@@ -45,7 +46,9 @@ var overallAnswersArray = [
 function startQuiz() {
     winner = false;
     timerCountdown = 90;
+    startButton.setAttribute("class", "hidden");
     countdownClock();
+    sectionEl.removeAttribute("class", "hidden");
     quiz();
 };
 
@@ -59,6 +62,8 @@ function countdownClock() {
         clearInterval(timer);
         }else{clearInterval(timer);}
     }, 1000); 
+    sectionEl.setAttribute("class", "hidden")
+    highScoreListEl.removeAttribute("class", "hidden")
 };
 
 function quiz(){
@@ -94,15 +99,15 @@ function CheckWin(){
 
 startButton.addEventListener("click", startQuiz);
 
-startButton.addEventListener("click", function(event) {
+sectionEl.addEventListener("click", function(event) {
     var element = event.target;
-        if (element.matches("#start-button")) {
-            var state = element.getAttribute("data-state");
-                if (state === "visible") {
-                    element.setAttribute("class", "hidden")
-                    element.textContent = "";
-                };  
-            };
+        // if (element.matches("#start-button")) {
+        //     var state = element.getAttribute("data-state");
+        //         if (state === "visible") {
+        //             element.setAttribute("class", "hidden")
+        //             element.textContent = "";
+        //         };  
+        //     };
         var element = event.target;
             if (element.matches(".card")){
                 var answer = element.getAttribute("data-answer");
@@ -120,7 +125,7 @@ startButton.addEventListener("click", function(event) {
             }else{
             quiz(currentQuestion++);
             };
-        
+
         };
         getPlayerInitials();
         getHighScores();
