@@ -1,7 +1,8 @@
 var sectionEl = document.querySelector("#quiz-section")
 var countdownEl = document.querySelector("#countdownClock")
-var highScoresListed = document.querySelector("#high-scores-listed")
-var playerInitialsListed = document.querySelector("player-initials-listed");
+var highScoresListed = document.querySelector("#player-scores")
+var playerInitialsListed = document.querySelector("#player-text");
+var highScoreForm = document.querySelector("#highScoreList")
 var startButton = document.querySelector("#start-button");
 var questionGrab = document.querySelector("#question");
 var answer1Grab = document.querySelector("#answer1");
@@ -9,16 +10,18 @@ var answer2Grab = document.querySelector("#answer2");
 var answer3Grab = document.querySelector("#answer3");
 var answer4Grab = document.querySelector("#answer4");
 var answer5Grab = document.querySelector("#answer5");
+var correctIncorrect = document.querySelector("#correctIncorrect");
+var formList = document.getElementById("list-activate")
 
 var timer
 var timerCountdown
-var winner
-var storedPlayerInitials
-var storedHighScores
+var winner = false
 var playerInitials
 var highScores = 0
 var currentQuestion = 0
 
+var players = [];
+var scores = [];
 
 var quizLayout = {
     question: "quizQuestionsArray[i]",
@@ -28,8 +31,6 @@ var quizLayout = {
     answer4: "overallAnswersArray[i].quizAnswers[3]", 
     answer5: "overallAnswersArray[i].quizAnswers[4]"
     };
-
-
 
 var quizQuestionsArray = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", 
 "Question 6", "Question 7", "Question 8", "Question 9", "Question 10"];
@@ -48,20 +49,56 @@ var overallAnswersArray = [
 ];
 
 function init(){
-    getplayerInitials();
+    getPlayerInitials();
     getHighScores();
 };
 
-function getplayerInitials(){
-    var storedPlayerInitials = localStorage.getItem("playerInitials");
-    if (storedPlayerInitials !==null){ 
-    playerInitialsListed.textContent = playerInitials;};
+function getPlayerInitials(){
+    var playerInitials = JSON.parse(localStorage.getItem("playerInitials"));
+    if (playerInitials !==null){ 
+        players.textContent = playerInitials;
+    };
 };
 
 function getHighScores(){
-    var storedHighScores = localStorage.getItem("highScores");
-    if (storedHighScores !==null){
-    highScoresListed.textContent = highScores;};
+    var highScores = JSON.parse(localStorage.getItem("highScores"));
+    if (highScores !==null){
+        highScoresListed.textContent = highScores;
+    };
+};
+
+function renderPlayers() {
+    playerInitialsListed.innerHTML = "";
+    for (var i = 0; i < players.length; i++) {
+        var players = players[i];
+
+        var li = document.createElement("li");
+        li.textContent = players;
+        li.setAttribute("data-index", i);
+
+        highScoresListed.appendChild(li);
+    };
+};
+
+function renderScore() {
+    highScoresListed.innerHTML = "";
+    for (var i = 0; i < scores.length; i++) {
+        var scores = scores[i];
+
+        var li = document.createElement("li");
+        li.textContent = scores;
+        li.setAttribute("data-index", i);
+
+        highScoresListed.appendChild(li);
+    };
+};
+
+function storePlayers(){
+    localStorage.setItem("playerInitials", JSON.stringify(playerInitials));
+};
+
+function storeScore(){
+    localStorage.setItem("highScores", JSON.stringify(highScores));
 };
 
 function startQuiz() {
@@ -76,28 +113,20 @@ function countdownClock() {
         timerCountdown--;
         countdownEl.textContent = timerCountdown;
         if (timerCountdown >= 0){
-            if(winner && timerCountdown >0){
-                clearInterval(timerCountdown);
-                smartyPants();
-            };
+            CheckWin();
+            }else if(timerCountdown === 0){
+                clearInterval(timer);
         };
-        if (timerCountdown === 0){
-            clearInterval(timer);
-            studyMore();
-        };
-    }, 1000);
+    }, 1000); 
 };
-// function smartyPants(){
-    
-// };
 
-// function studyMore(){
-
-// };
-
-// function scoreBoard(){
-
-// };
+function CheckWin(){
+    if((currentQuestion > 8) && (highScores > 0) && (timerCountdown >0)){
+        winner = true;
+        clearInterval(timerCountdown);
+        sectionEl.textContent = formList
+    };
+};
 
 function quiz(){
 
@@ -118,51 +147,54 @@ function quiz(){
     answer3Grab.setAttribute("data-answer", quizLayout.answer3)
     answer4Grab.textContent = (quizLayout.answer4);
     answer4Grab.setAttribute("data-answer", quizLayout.answer4)
-    // answer5Grab.textContent = (quizLayout.answer5);
-    // answer5Grab.setAttribute("data-answer", quizLayout.answer5)
 };
-
-
-// function setplayerInitials(){
-//     playerInitialsListed.textContent = playerInitials;
-//     localStorage.setItem("playerInitials", playerInitials)
-// };
-    
-// function setHighScores(){
-//     highScoresListed.textContent = highScores;
-//     localStorage.setItem("highScores", highScores);
-// };
-
-// };
 
 startButton.addEventListener("click", startQuiz);
 
 sectionEl.addEventListener("click", function(event) {
     var element = event.target;
-    if (element.matches("#start-button")) {
-      var state = element.getAttribute("data-state");
-      if (state === "visible") {
-        element.setAttribute("class", "hidden")
-        element.textContent = "";
-        };  
-    };
-    var element = event.target;
-    if (element.matches(".card")){
-        var answer = element.getAttribute("data-answer");
-        console.log(answer);
-        var correct = overallAnswersArray[currentQuestion][4]
-    if (answer === correct){
-        highScores = (highScores + 10);
-        console.log(highScores);
-    }else{
-        timerCountdown = (timerCountdown - 15);
-    };
-    if(currentQuestion > 8){
-        sectionEl.setAttribute("class", "hidden")
-        sectionEl.innerHTML = "";
-    }else{
-        quiz(currentQuestion++);
-    };
-    };
+        if (element.matches("#start-button")) {
+            var state = element.getAttribute("data-state");
+                if (state === "visible") {
+                    element.setAttribute("class", "hidden")
+                    element.textContent = "";
+                };  
+            };
+        var element = event.target;
+            if (element.matches(".card")){
+                var answer = element.getAttribute("data-answer");
+                console.log(answer);
+                var correct = overallAnswersArray[currentQuestion][4]
+            if (answer === correct){
+                highScores = (highScores + 10);
+                console.log(highScores);
+            }else{
+                timerCountdown = (timerCountdown - 15);
+            };
+            if(currentQuestion > 8){
+                sectionEl.setAttribute("class", "hidden")
+            sectionEl.innerHTML = "";
+            }else{
+            quiz(currentQuestion++);
+            };
+        };
     });
+
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+        var playerInitials = playerinput.value.trim();
+            if (playerInitials === "") {
+                window.alert("Please put your intitials into the space provided");
+                return;
+            }
+        players.push(playerInitials);
+
+    getPlayerInitials();
+    getHighScores();
+    renderPlayers();
+    renderScore();
+    storePlayers();
+    storeScore();
+});
+
 init();

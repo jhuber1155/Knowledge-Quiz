@@ -5,9 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High Scores from the Quiz!</title>
 </head>
-<body>
+    <body class="high-score-page">
     <h1>High Scores!</h1>
-    <h2 id="player-initals-listed">Initials:</h2>
-    <p id="high-scores-listed"></p>
+    <h2 id="player-initals-header">Previous Players:</h2>
+        <ul id="player-list">
+            <li id="player-initials">
+
+            </li>
+        </ul>
+    <p id="high-scores-header"></p>
+        <ul id="high-scores-list">
+            <li id="high-score">
+
+            </li>
+        </ul>
+    </section>
+    <section class="list-activate">
+        <h1>High Score!</h1>
+        <form id="highScoreList" method="POST">
+            <label for="player-initials">Player Initials</label>
+            <input type="text" placeholder="Enter your initials" name="player-text" id="player-text">
+        </form>
+        <p>High Score:</p>
+        <ul id="player-scores"></ul>
+
+    </section>
+        
+
 </body>
 </html>
