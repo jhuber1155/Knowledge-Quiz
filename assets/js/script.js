@@ -1,8 +1,5 @@
 var sectionEl = document.querySelector("#quiz-section")
 var countdownEl = document.querySelector("#countdownClock")
-var highScoresListed = document.querySelector("#player-scores")
-var playerInitialsListed = document.querySelector("#player-text");
-var highScoreForm = document.querySelector("#highScoreList")
 var startButton = document.querySelector("#start-button");
 var questionGrab = document.querySelector("#question");
 var answer1Grab = document.querySelector("#answer1");
@@ -11,7 +8,6 @@ var answer3Grab = document.querySelector("#answer3");
 var answer4Grab = document.querySelector("#answer4");
 var answer5Grab = document.querySelector("#answer5");
 var correctIncorrect = document.querySelector("#correctIncorrect");
-var formList = document.getElementById("list-activate")
 
 var timer
 var timerCountdown
@@ -19,9 +15,6 @@ var winner = false
 var playerInitials
 var highScores = 0
 var currentQuestion = 0
-
-var players = [];
-var scores = [];
 
 var quizLayout = {
     question: "quizQuestionsArray[i]",
@@ -48,58 +41,6 @@ var overallAnswersArray = [
 ["soda", "Sample0Answer2", "Sample0Answer3", "Sample0Answer4", "soda"],
 ];
 
-function init(){
-    getPlayerInitials();
-    getHighScores();
-};
-
-function getPlayerInitials(){
-    var playerInitials = JSON.parse(localStorage.getItem("playerInitials"));
-    if (playerInitials !==null){ 
-        players.textContent = playerInitials;
-    };
-};
-
-function getHighScores(){
-    var highScores = JSON.parse(localStorage.getItem("highScores"));
-    if (highScores !==null){
-        highScoresListed.textContent = highScores;
-    };
-};
-
-function renderPlayers() {
-    playerInitialsListed.innerHTML = "";
-    for (var i = 0; i < players.length; i++) {
-        var players = players[i];
-
-        var li = document.createElement("li");
-        li.textContent = players;
-        li.setAttribute("data-index", i);
-
-        highScoresListed.appendChild(li);
-    };
-};
-
-function renderScore() {
-    highScoresListed.innerHTML = "";
-    for (var i = 0; i < scores.length; i++) {
-        var scores = scores[i];
-
-        var li = document.createElement("li");
-        li.textContent = scores;
-        li.setAttribute("data-index", i);
-
-        highScoresListed.appendChild(li);
-    };
-};
-
-function storePlayers(){
-    localStorage.setItem("playerInitials", JSON.stringify(playerInitials));
-};
-
-function storeScore(){
-    localStorage.setItem("highScores", JSON.stringify(highScores));
-};
 
 function startQuiz() {
     winner = false;
@@ -114,18 +55,10 @@ function countdownClock() {
         countdownEl.textContent = timerCountdown;
         if (timerCountdown >= 0){
             CheckWin();
-            }else if(timerCountdown === 0){
-                clearInterval(timer);
-        };
+        }else if(currentQuestion > 8){
+        clearInterval(timer);
+        }else{clearInterval(timer);}
     }, 1000); 
-};
-
-function CheckWin(){
-    if((currentQuestion > 8) && (highScores > 0) && (timerCountdown >0)){
-        winner = true;
-        clearInterval(timerCountdown);
-        sectionEl.textContent = formList
-    };
 };
 
 function quiz(){
@@ -147,6 +80,16 @@ function quiz(){
     answer3Grab.setAttribute("data-answer", quizLayout.answer3)
     answer4Grab.textContent = (quizLayout.answer4);
     answer4Grab.setAttribute("data-answer", quizLayout.answer4)
+};
+
+function CheckWin(){
+    if(highScores>0 && timerCountdown===0){
+        winner = true;
+        clearInterval(timer);
+        sectionEl.textContent = formList
+        renderPlayers();
+        renderScore();
+    };
 };
 
 startButton.addEventListener("click", startQuiz);
@@ -178,23 +121,11 @@ sectionEl.addEventListener("click", function(event) {
             quiz(currentQuestion++);
             };
         };
+        getPlayerInitials();
+        getHighScores();
+        renderPlayers();
+        renderScore();
+        storePlayers();
+        storeScore();
     });
-
-form.addEventListener("submit", function(event){
-    event.preventDefault();
-        var playerInitials = playerinput.value.trim();
-            if (playerInitials === "") {
-                window.alert("Please put your intitials into the space provided");
-                return;
-            }
-        players.push(playerInitials);
-
-    getPlayerInitials();
-    getHighScores();
-    renderPlayers();
-    renderScore();
-    storePlayers();
-    storeScore();
-});
-
 init();
