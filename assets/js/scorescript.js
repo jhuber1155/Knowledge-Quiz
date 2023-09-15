@@ -1,63 +1,70 @@
-var highScoresListed = document.querySelector("#player-scores")
-var playerInitialsListed = document.querySelector("#player-text");
-var highScoreForm = document.querySelector("#highScoreList")
-var formList = document.querySelector("list-activate")
-var resetButton = document.querySelector(".reset-button")
+var highScoresListed = document.querySelector("#player-scores");
+var playerInitialsListed = document.querySelector("#player-list");
+var highScoreList = document.querySelector("#high-scores-list");
+var formList = document.querySelector("list-activate");
+var resetButton = document.querySelector(".reset-button");
 
 var players = [];
 var scores = [];
 
-function init(){
+function iniths(){
     getPlayerInitials();
     getHighScores();
+    console.log(players);
+    if(players.length > 0 && scores.length > 0){
+        renderPlayers();
+        renderScore();
+    }
 };
 
 function getPlayerInitials(){
     var playerInitials = JSON.parse(localStorage.getItem("playerInitials"));
+    console.log(playerInitials);
     if (playerInitials !==null){ 
-        players.textContent = playerInitials;
+        players = playerInitials;
     };
 };
 
 function getHighScores(){
     var highScores = JSON.parse(localStorage.getItem("highScores"));
     if (highScores !==null){
-        highScoresListed.textContent = highScores;
+        scores = highScores;
     };
 };
 
 function renderPlayers() {
     playerInitialsListed.innerHTML = "";
+    console.log(players);
     for (var i = 0; i < players.length; i++) {
-        var players = players[i];
+        var player = players[i];
 
         var li = document.createElement("li");
-        li.textContent = players;
+        li.textContent = player;
         li.setAttribute("data-index", i);
 
-        highScoresListed.appendChild(li);
+        playerInitialsListed.appendChild(li);
     };
 };
 
 function renderScore() {
-    highScoresListed.innerHTML = "";
+    highScoreList.innerHTML = "";
     for (var i = 0; i < scores.length; i++) {
-        var scores = scores[i];
+        var score = scores[i];
 
         var li = document.createElement("li");
-        li.textContent = scores;
+        li.textContent = score;
         li.setAttribute("data-index", i);
 
-        highScoresListed.appendChild(li);
+        highScoreList.appendChild(li);
     };
 };
 
 function storePlayers(){
-    localStorage.setItem("playerInitials", JSON.stringify(playerInitials));
+    localStorage.setItem("playerInitials", JSON.stringify(players));
 };
 
 function storeScore(){
-    localStorage.setItem("highScores", JSON.stringify(highScores));
+    localStorage.setItem("highScores", JSON.stringify(scores));
 };
 
 function resetGame(){
@@ -67,24 +74,8 @@ function resetGame(){
     renderScore();
     storePlayers();
     storeScore();
-}
+};
 
-highScoreForm.addEventListener("submit", function(event){
-    event.preventDefault();
-        var playerInitials = playerinput.value.trim();
-            if (playerInitials === "") {
-                window.alert("Please put your intitials into the space provided");
-                return;
-            }
-        players.push(playerInitials);
-        scores.push(highScores);
-
-    getPlayerInitials();
-    getHighScores();
-    renderPlayers();
-    renderScore();
-    storePlayers();
-    storeScore();
-});
+iniths();
 
 resetButton.addEventListener("click", resetGame);
