@@ -38,8 +38,14 @@ p{
     margin-left: 40%;
 }
 
+button{
+    padding: 10px;
+    margin: 20px;
+    font-size: 48px;
+}
+
 .reset-button{
-    margin-left: 50%;
+    margin-left: 38%;
 }
 
 #player-scores{
