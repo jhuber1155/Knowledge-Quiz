@@ -46,18 +46,6 @@ section{
     border: teal solid 5px;
 }
 
-#correctIncorrect{
-    display:block;
-    width: 25%;
-    font-size: larger;
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    border: crimson solid 5px;
-}
-
 #top-warning{
     text-align: center;
     margin-top: -7%;

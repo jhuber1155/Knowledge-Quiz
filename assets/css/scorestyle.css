@@ -1,0 +1,48 @@
+
+h1{
+    font-size: 64px;
+    padding: 20px;
+    text-align: center;
+    color: antiquewhite;
+    background-color: slateblue;
+}
+
+h2{
+    font-size: xx-large;
+    padding: 20px;
+    text-align: center;
+    color: antiquewhite;
+    background-color: slateblue;
+}
+
+ul{
+    display: inline-block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label{
+    font-size: 36px;
+    margin-left: 40%;
+}
+
+input{
+    font-size: 32px;
+    margin-top: 2%;
+    margin-left: 40%;
+}
+
+p{
+    font-size: 42px;
+    margin-left: 40%;
+}
+
+.reset-button{
+    margin-left: 50%;
+}
+
+#player-scores{
+    font-size: 48px;
+    color: crimson;
+}

@@ -1,7 +1,8 @@
 var highScoresListed = document.querySelector("#player-scores")
 var playerInitialsListed = document.querySelector("#player-text");
 var highScoreForm = document.querySelector("#highScoreList")
-var formList = document.getElementById("list-activate")
+var formList = document.querySelector("list-activate")
+var resetButton = document.querySelector(".reset-button")
 
 var players = [];
 var scores = [];
@@ -59,6 +60,15 @@ function storeScore(){
     localStorage.setItem("highScores", JSON.stringify(highScores));
 };
 
+function resetGame(){
+    playerInitials = " ";
+    highScores = 0;
+    renderPlayers();
+    renderScore();
+    storePlayers();
+    storeScore();
+}
+
 highScoreForm.addEventListener("submit", function(event){
     event.preventDefault();
         var playerInitials = playerinput.value.trim();
@@ -76,3 +86,5 @@ highScoreForm.addEventListener("submit", function(event){
     storePlayers();
     storeScore();
 });
+
+resetButton.addEventListener("click", resetGame);
