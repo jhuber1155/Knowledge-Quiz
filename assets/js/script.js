@@ -94,7 +94,7 @@ function CheckWin(){
 
 startButton.addEventListener("click", startQuiz);
 
-sectionEl.addEventListener("click", function(event) {
+startButton.addEventListener("click", function(event) {
     var element = event.target;
         if (element.matches("#start-button")) {
             var state = element.getAttribute("data-state");
@@ -120,6 +120,7 @@ sectionEl.addEventListener("click", function(event) {
             }else{
             quiz(currentQuestion++);
             };
+        
         };
         getPlayerInitials();
         getHighScores();
