@@ -16,13 +16,9 @@ var winner
 var storedPlayerInitials
 var storedHighScores
 var playerInitials
-var highScores
-var questions
-var answer1
-var answer2
-var answer3
-var answer4
-var answer5
+var highScores = 0
+var currentQuestion = 0
+
 
 var quizLayout = {
     question: "quizQuestionsArray[i]",
@@ -33,22 +29,22 @@ var quizLayout = {
     answer5: "overallAnswersArray[i].quizAnswers[4]"
     };
 
-    var currentQuestion = 0
+
 
 var quizQuestionsArray = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", 
 "Question 6", "Question 7", "Question 8", "Question 9", "Question 10"];
 
 var overallAnswersArray = [
-["Sample1Answer1", "Sample1Answer2", "Sample1Answer3", "Sample1Answer4", "Sample1Correct"], 
-["Sample2Answer1", "Sample2Answer2", "Sample2Answer3", "Sample2Answer4", "Sample2Correct"],
-["Sample3Answer1", "Sample3Answer2", "Sample3Answer3", "Sample3Answer4", "Sample3Correct"],
-["Sample4Answer1", "Sample4Answer2", "Sample4Answer3", "Sample4Answer4", "Sample4Correct"],
-["Sample5Answer1", "Sample5Answer2", "Sample5Answer3", "Sample5Answer4", "Sample5Correct"],
-["Sample6Answer1", "Sample6Answer2", "Sample6Answer3", "Sample6Answer4", "Sample6Correct"],
-["Sample7Answer1", "Sample7Answer2", "Sample7Answer3", "Sample7Answer4", "Sample7Correct"],
-["Sample8Answer1", "Sample8Answer2", "Sample8Answer3", "Sample8Answer4", "Sample8Correct"],
-["Sample9Answer1", "Sample9Answer2", "Sample9Answer3", "Sample9Answer4", "Sample9Correct"],
-["Sample0Answer1", "Sample0Answer2", "Sample0Answer3", "Sample0Answer4", "Sample0Correct"],
+["Sample1Answer1", "Apples", "Sample1Answer3", "Sample1Answer4", "Apples"], 
+["Pears", "Sample2Answer2", "Sample2Answer3", "Sample2Answer4", "Pears"],
+["Sample3Answer1", "Sample3Answer2", "Sample3Answer3", "Orange", "Orange"],
+["Sample4Answer1", "red", "Sample4Answer3", "Sample4Answer4", "red"],
+["blue", "Sample5Answer2", "Sample5Answer3", "Sample5Answer4", "blue"],
+["Sample6Answer1", "Sample6Answer2", "Sample6Answer3", "dogs", "dogs"],
+["cats", "Sample7Answer2", "Sample7Answer3", "Sample7Answer4", "cats"],
+["Sample8Answer1", "mouse", "Sample8Answer3", "Sample8Answer4", "mouse"],
+["Sample9Answer1", "Sample9Answer2", "water", "Sample9Answer4", "water"],
+["soda", "Sample0Answer2", "Sample0Answer3", "Sample0Answer4", "soda"],
 ];
 
 function init(){
@@ -70,7 +66,7 @@ function getHighScores(){
 
 function startQuiz() {
     winner = false;
-    timerCountdown = 10;
+    timerCountdown = 90;
     countdownClock();
     quiz();
 };
@@ -112,7 +108,7 @@ function quiz(){
     quizLayout.answer2 = overallAnswersArray[currentQuestion][1]
     quizLayout.answer3 = overallAnswersArray[currentQuestion][2]
     quizLayout.answer4 = overallAnswersArray[currentQuestion][3]
-    // quizLayout.answer5 = overallAnswersArray[currentQuestion][4]
+    quizLayout.answer5 = overallAnswersArray[currentQuestion][4]
     
     answer1Grab.textContent = (quizLayout.answer1);
     answer1Grab.setAttribute("data-answer", quizLayout.answer1)
@@ -124,14 +120,8 @@ function quiz(){
     answer4Grab.setAttribute("data-answer", quizLayout.answer4)
     // answer5Grab.textContent = (quizLayout.answer5);
     // answer5Grab.setAttribute("data-answer", quizLayout.answer5)
+};
 
-    // if("data-answer" === quizLayout.answer5){
-    //     var highScores = (highScores + 10);
-    // }else{
-    //     timerCountdown = (timerCountdown - 15);
-    // }
-    };
-// };
 
 // function setplayerInitials(){
 //     playerInitialsListed.textContent = playerInitials;
@@ -154,19 +144,25 @@ sectionEl.addEventListener("click", function(event) {
       if (state === "visible") {
         element.setAttribute("class", "hidden")
         element.textContent = "";
-    };  
-};
+        };  
+    };
     var element = event.target;
     if (element.matches(".card")){
         var answer = element.getAttribute("data-answer");
         console.log(answer);
+        var correct = overallAnswersArray[currentQuestion][4]
+    if (answer === correct){
+        highScores = (highScores + 10);
+        console.log(highScores);
+    }else{
+        timerCountdown = (timerCountdown - 15);
+    };
     if(currentQuestion > 8){
         sectionEl.setAttribute("class", "hidden")
         sectionEl.innerHTML = "";
     }else{
         quiz(currentQuestion++);
     };
-};
-});
-
+    };
+    });
 init();
