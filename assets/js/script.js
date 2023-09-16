@@ -98,8 +98,6 @@ function CheckWin(){
         winner = true;
         clearInterval(timer);
         sectionEl.textContent = highScoreForm
-        // renderPlayers();
-        // renderScore();
     };
 };
 //This function pulls the player initials out of local storage and parses them with JSON. If there are initials in storage, this will pull them out and assign it the players variable
@@ -175,4 +173,3 @@ sectionEl.addEventListener("click", function(event) {
         getHighScores();
         
     });
-// init();
