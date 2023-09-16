@@ -81,11 +81,9 @@ resetButton.addEventListener("click", function (event){
     renderPlayers();
     renderScore();
     storePlayers();
-    storeScore();
+    storeScore();   
     resetPlayers();
     resetScore();
-    iniths();
 });
-
 iniths();
 

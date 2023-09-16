@@ -32,20 +32,20 @@ var quizLayout = {
     answer5: "overallAnswersArray[i].quizAnswers[4]"
     };
 
-var quizQuestionsArray = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", 
-"Question 6", "Question 7", "Question 8", "Question 9", "Question 10"];
+var quizQuestionsArray = ["What does HTML stand for?", "Cascading Style Sheets are read in what order?", "What is the Javascript file extension?", "What command do we use to add attributes in Javascript?", "If we want to add an element to the end another element in Javascript, we use which command?", 
+"What is an object in Javascript?", "What does JSON stand for?", "What are semantic elements in HTML?", "What are some examples of assets in your code editor?", "Are you having fun with this quiz yet?"];
 
 var overallAnswersArray = [
-["Sample1Answer1", "Apples", "Sample1Answer3", "Sample1Answer4", "Apples"], 
-["Pears", "Sample2Answer2", "Sample2Answer3", "Sample2Answer4", "Pears"],
-["Sample3Answer1", "Sample3Answer2", "Sample3Answer3", "Orange", "Orange"],
-["Sample4Answer1", "red", "Sample4Answer3", "Sample4Answer4", "red"],
-["blue", "Sample5Answer2", "Sample5Answer3", "Sample5Answer4", "blue"],
-["Sample6Answer1", "Sample6Answer2", "Sample6Answer3", "dogs", "dogs"],
-["cats", "Sample7Answer2", "Sample7Answer3", "Sample7Answer4", "cats"],
-["Sample8Answer1", "mouse", "Sample8Answer3", "Sample8Answer4", "mouse"],
-["Sample9Answer1", "Sample9Answer2", "water", "Sample9Answer4", "water"],
-["soda", "Sample0Answer2", "Sample0Answer3", "Sample0Answer4", "soda"],
+["Hyper Typer Making Labels", "Hyper Text Markup Language", "How To Miss Lunch", "Hypo Textual Marked Language", "Hyper Text Markup Language"], 
+["Top-to-Bottom", "Side-to-Side", "From the bottom up", "With a weathered eye", "Top-to-Bottom"],
+[".java", ".mocha", ".script", ".js", ".js"],
+[".changeStyle", ".setAttribute", ".hocusPocus", ".makeAttribute", ".setAttribute"],
+[".appendChild", "+add", ".appendectomy", "element + element", ".appendChild"],
+["A group of similar variables", "A planetary body", "A group of easily sortable data", "An object is a collection of properties, and a property is an association between a name (or key) and a value.", "An object is a collection of properties, and a property is an association between a name (or key) and a value."],
+["JavaScript Object Notation", "Just Spying On Neighbors", "Justified Scripting On Notation", "Julienned Script Over Notes", "JavaScript Object Notation"],
+["Elements which have sentimental meaning to their creators and readers", "Semantic HTML elements are those that clearly describe their meaning in a human- and machine-readable way", "A way of transcribing HTML into other computer languages", "Elements, which when combined together, form a semantic philosophical argument", "Semantic HTML elements are those that clearly describe their meaning in a human- and machine-readable way"],
+["Secret Spies and the messages they leave inbetween the lines of code you read", "The fewer lines of code you have, the more its worth as an asset", "images, css style sheets, javascript files", "The extensions and debugging tools", "images, css style sheets, javascript files"],
+["Yes", "Yes", "Yes", "Yes", "Yes"],
 ];
 
 
