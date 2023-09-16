@@ -130,13 +130,6 @@ startButton.addEventListener("click", startQuiz);
 
 sectionEl.addEventListener("click", function(event) {
     var element = event.target;
-        // if (element.matches("#start-button")) {
-        //     var state = element.getAttribute("data-state");
-        //         if (state === "visible") {
-        //             element.setAttribute("class", "hidden")
-        //             element.textContent = "";
-        //         };  
-        //     };
         var element = event.target;
             if (element.matches(".card")){
                 var answer = element.getAttribute("data-answer");
@@ -144,9 +137,13 @@ sectionEl.addEventListener("click", function(event) {
                 var correct = overallAnswersArray[currentQuestion][4]
             if (answer === correct){
                 highScores = (highScores + 10);
+                correctIncorrect.textContent = ("That is Correct!")
+                correctIncorrect.setAttribute("style", "background-color: limegreen");
                 console.log(highScores);
             }else{
                 timerCountdown = (timerCountdown - 15);
+                correctIncorrect.textContent = ("Sorry! Wrong Answer!");
+                correctIncorrect.setAttribute("style", "background-color: crimson");
             };currentQuestion++ 
             console.log(currentQuestion);
             if(currentQuestion > 9){
