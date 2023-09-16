@@ -15,7 +15,7 @@
     </header>
     <h1 id="heading">Time To Test Your Knowledge!</h1>
     <h2 id="subtext"> How much have you learned from this coding bootcamp! Time to put you to the test! Can you solve these questions before the timer runs out?</h2> 
-        <p id="top-warning"><span id="warning">*Warning*</span> If you answer a question incorrectly, time will be taken away from the timer!</p>
+        <p id="top-warning"><span id="warning">*Warning*</span> If you answer a question incorrectly, 15 seconds will be taken away from the timer for each wrong answer!</p>
 
     <button id="start-button" data-state="visible" >Start the Quiz!</button>
     <section class="hidden" id="quiz-section">
@@ -28,11 +28,11 @@
     </section>
 
     <section class="high-score-input hidden" data-state="hidden">
-        <h1>High Score!</h1>
+        <h1 id="high-score-header">High Score!</h1>
         <form id="high-score-list" method="POST">
                 <label for="player-initials">Player Initials: </label>
                 <input type="text" placeholder="Enter your initials" name="player-text" id="player-text">
-                <p>High Score:</p>
+                <p id="your-score-text">High Score:</p>
                 <ul id="player-scores"></ul>
         </form>
     </section>

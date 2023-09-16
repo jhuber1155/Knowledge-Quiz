@@ -6,24 +6,12 @@ body{
     background-color:whitesmoke;
 }
 
+label{
+    font-size: 48px;
+}
+
 li{
     list-style-type: none;
-}
-
-#heading {
-    text-align: center;
-    font-size: 64px;
-    color: purple;
-}
-
-#subtext {
-    padding: 5px;
-    margin: 10%;
-    margin-left: 24%;
-    margin-right: 24%;
-    margin-top: 2%;
-    text-align: center;
-    font-size: 36px;
 }
 
 section{
@@ -43,13 +31,12 @@ section{
     margin: 10px;
     margin-left: auto;
     margin-right: auto;
-    border: teal solid 5px;
+    background-color: teal;
+    color: antiquewhite;
 }
 
-#top-warning{
-    text-align: center;
-    margin-top: -7%;
-    font-size: 24px;
+.hidden{
+    display: none;
 }
 
 #countdownClock{
@@ -61,6 +48,17 @@ section{
     font-size: 24px;
 }
 
+#heading {
+    text-align: center;
+    font-size: 64px;
+    color: purple;
+}
+
+#high-score-header{
+    font-size: 64px;
+    color: dodgerblue;
+}
+
 #high-score-page{
     width: 10%;
     padding: 10px;
@@ -70,14 +68,25 @@ section{
     color:mediumpurple;
 }
 
-.hidden{
-    display: none;
+#player-scores{
+    font-size: 64px;
+    margin-top: -1%;
+    margin-right: 2%;
+}
+
+#player-text{
+    font-size: 36px;
+}
+
+#quiz-section{
+    margin-right: 2%;
+    margin-top: .5%;
 }
 
 #start-button{
     font-size: xx-large;
-    margin-right: auto;
-    margin-top: 0%;
+    margin-left: 45%;
+    margin-top: 2%;
     background-color: cadetblue;
     color:gold;
 }
@@ -86,6 +95,27 @@ section{
     text-align: center;
 }
 
+#subtext {
+    padding: 5px;
+    margin: 10%;
+    margin-left: 24%;
+    margin-right: 24%;
+    margin-top: 2%;
+    text-align: center;
+    font-size: 36px;
+}
+
+#top-warning{
+    text-align: center;
+    margin-top: -7%;
+    font-size: 24px;
+}
+
 #warning{
     color:crimson;
+}
+
+#your-score-text{
+    font-size: 56px;
+    color: goldenrod;
 }

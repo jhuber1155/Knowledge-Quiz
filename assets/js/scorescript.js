@@ -75,8 +75,7 @@ function resetScore(){
     localStorage.clear();
 }
 
-function resetGame(){
-   
+resetButton.addEventListener("click", function (event){
     getPlayerInitials();
     getHighScores();
     renderPlayers();
@@ -85,8 +84,8 @@ function resetGame(){
     storeScore();
     resetPlayers();
     resetScore();
+    iniths();
+});
 
-};
 iniths();
 
-resetButton.addEventListener("click", resetGame);

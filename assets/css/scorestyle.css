@@ -22,7 +22,7 @@ ul{
     margin-right: auto;
 }
 
-label{
+/* label{
     font-size: 36px;
     margin-left: 40%;
 }
@@ -31,12 +31,12 @@ input{
     font-size: 32px;
     margin-top: 2%;
     margin-left: 40%;
-}
+} */
 
-p{
+/* p{
     font-size: 42px;
     margin-left: 40%;
-}
+} */
 
 button{
     padding: 10px;
@@ -44,11 +44,30 @@ button{
     font-size: 48px;
 }
 
+.go-back{
+    padding: 10px;
+    margin: 20px;
+    margin-left: 1%;
+}
+
 .reset-button{
     margin-left: 38%;
 }
 
-#player-scores{
+#high-scores-list{
+    font-size: xx-large;
+    text-align: center;
+    margin-left: 8%;
+}
+
+#player-list{
+    font-size: xx-large;
+    text-align: center;
+    margin-left: 42%;
+    
+}
+
+/* #player-scores{
     font-size: 48px;
     color: crimson;
-}
+} */
