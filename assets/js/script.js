@@ -1,6 +1,6 @@
 var sectionEl = document.querySelector("#quiz-section");
 var highScoreListEl = document.querySelector(".high-score-input");
-var highScoreForm = document.querySelector("#highScoreList");
+var highScoreForm = document.querySelector("#high-score-list");
 var playerText = document.querySelector("#player-text");
 var playerScoresEl = document.querySelector("#player-scores")
 var countdownEl = document.querySelector("#countdownClock");
@@ -97,9 +97,9 @@ function CheckWin(){
     if(highScores>0 && currentQuestion === 10){
         winner = true;
         clearInterval(timer);
-        sectionEl.textContent = formList
-        renderPlayers();
-        renderScore();
+        sectionEl.textContent = highScoreForm
+        // renderPlayers();
+        // renderScore();
     };
 };
 
@@ -116,6 +116,7 @@ function getHighScores(){
         scores = highScores;
     };
 };
+
 
 function storePlayers(){
     localStorage.setItem("playerInitials", JSON.stringify(players));
@@ -164,16 +165,16 @@ sectionEl.addEventListener("click", function(event) {
         if (initials === "") {
             window.alert("Please put your intitials into the space provided");
             return;
-        }
-        getPlayerInitials();
-        getHighScores();
-        console.log(initials);
+        };
+        console.log(players);
         players.push(initials);
         scores.push(highScores);
-        console.log(players);
+        console.log(initials);
         console.log(scores);
         storePlayers();
         storeScore();
+        getPlayerInitials();
+        getHighScores();
         
-    })
-init();
+    });
+// init();

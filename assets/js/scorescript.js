@@ -75,7 +75,6 @@ function resetGame(){
     storePlayers();
     storeScore();
 };
-
 iniths();
 
 resetButton.addEventListener("click", resetGame);
