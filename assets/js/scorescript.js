@@ -10,7 +10,7 @@ var scores = [];
 function iniths(){
     getPlayerInitials();
     getHighScores();
-    console.log(players);
+    // console.log(players);
     if(players.length > 0 && scores.length > 0){
         renderPlayers();
         renderScore();
@@ -19,7 +19,7 @@ function iniths(){
 
 function getPlayerInitials(){
     var playerInitials = JSON.parse(localStorage.getItem("playerInitials"));
-    console.log(playerInitials);
+    // console.log(playerInitials);
     if (playerInitials !==null){ 
         players = playerInitials;
     };
@@ -34,7 +34,7 @@ function getHighScores(){
 
 function renderPlayers() {
     playerInitialsListed.innerHTML = "";
-    console.log(players);
+    // console.log(players);
     for (var i = 0; i < players.length; i++) {
         var player = players[i];
 
@@ -67,13 +67,25 @@ function storeScore(){
     localStorage.setItem("highScores", JSON.stringify(scores));
 };
 
+function resetPlayers(){
+    localStorage.clear();
+};
+
+function resetScore(){
+    localStorage.clear();
+}
+
 function resetGame(){
-    playerInitials = " ";
-    highScores = 0;
+   
+    getPlayerInitials();
+    getHighScores();
     renderPlayers();
     renderScore();
     storePlayers();
     storeScore();
+    resetPlayers();
+    resetScore();
+
 };
 iniths();
 
